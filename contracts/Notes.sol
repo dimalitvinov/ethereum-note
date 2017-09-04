@@ -6,8 +6,8 @@ contract Notes {
   Note[] public notes;
 
   struct Note {
-    bytes32 text;
     uint id;
+    bytes32 text;
   }
 /*
   function Notes() {
@@ -20,7 +20,7 @@ contract Notes {
   }*/
 
 
-  function addNote(bytes32 _text, uint _id) returns (bool success) {
+  function addNote(uint _id, bytes32 _text) returns (bool success) {
     Note memory newNote;
     newNote.text = _text;
     newNote.id = _id;
@@ -29,7 +29,7 @@ contract Notes {
     return true;
   }
 
-  function editNote(bytes32 newText, uint curId) returns(uint){
+  function editNote(uint curId, bytes32 newText) returns(uint){
     for (uint i = 0; i < notes.length; i++){
       Note memory newNote;
       newNote = notes[i];
@@ -42,7 +42,7 @@ contract Notes {
     return curId;
   }
 
-  function getNotes() constant returns (bytes32[], uint[]) {
+  function getNotes() constant returns (uint[], bytes32[]) {
     uint length = notes.length;
     bytes32[] memory texts = new bytes32[](length);
     uint[] memory ids = new uint[](length);
@@ -54,20 +54,19 @@ contract Notes {
         ids[i] = currentNote.id;
     }
 
-    return (texts, ids);
+    return (ids, texts);
   }
 
   function removeNote(uint id) returns(uint) {
-    uint length = notes.length;
-     for (uint i = 0; i < length; i++){
+     for (uint i = 0; i < notes.length; i++){
       Note memory newNote;
       newNote = notes[i];
 
       if (newNote.id == id) {
         delete notes[i];
 
-        if (i < length-1) {
-          notes[i] = notes[length-1];
+        if (i < notes.length-1) {
+          notes[i] = notes[notes.length-1];
         }
         notes.length--;
       }
