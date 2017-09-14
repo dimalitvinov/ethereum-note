@@ -39,4 +39,4 @@ npm start
 
 then visit http://localhost:3000
 
-## and GO!
+## And GO!
