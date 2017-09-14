@@ -28,7 +28,7 @@ truffle console
 ```
 copy abi and paste in "config.js" like as "NotesContractABI"
 
-## now, we can start react-app
+## React-app
 https://github.com/dimalitvinov/react-note
 
 in /react-note run
@@ -37,6 +37,6 @@ npm install
 npm start
 ```
 
-then visit localhost:3000
+then visit http://localhost:3000
 
 ## and GO!
