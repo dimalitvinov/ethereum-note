@@ -7,6 +7,7 @@ in /ethereum-note run
 ```shell
 npm install ethereumjs-testrpc web3 solc
 npm install -g truffle
+testrpc
 ```
 
 and run
