@@ -47,6 +47,8 @@ truffle console
 ```
 copy abi and paste in "/react-note/src/config.js" like as "NotesContractABI"
 
+set in ETHEREUM_CLIENT line
+HttpProvider to "http://localhost:8545"
 
 now in /react-note run
 ```shell
