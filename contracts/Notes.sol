@@ -1,26 +1,22 @@
 pragma solidity ^0.4.11;
 
 contract Notes {
-  /*address owner;*/
+  address public owner = msg.sender;
 
   Note[] public notes;
+
+  modifier onlyOwner() {
+    if (msg.sender == owner) {
+      _;
+    }
+  }
 
   struct Note {
     uint id;
     bytes32 text;
   }
-/*
-  function Notes() {
-    owner = msg.sender;
-  }
 
-  modifier onlyOwner() {
-    if (msg.sender != owner) { revert(); }
-    _;
-  }*/
-
-
-  function addNote(uint _id, bytes32 _text) returns (bool success) {
+  function addNote(uint _id, bytes32 _text) onlyOwner() returns (bool success) {
     Note memory newNote;
     newNote.text = _text;
     newNote.id = _id;
